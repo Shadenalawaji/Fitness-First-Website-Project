@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness First | Premium Studio Fitness</title>
+    <style>
+        /* CSS Reset & Variables */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #ff3e3e; /* Neon Red/Orange for energy */
+            --bg-dark: #111116;
+            --bg-card: #1b1b22;
+            --text-light: #ffffff;
+            --text-gray: #a0a0a8;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Header & Navigation */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background-color: rgba(17, 17, 22, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #222;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .cta-btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 24px;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .cta-btn:hover {
+            background-color: #e03232;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0 8%;
+            background: linear-gradient(to right, rgba(17,17,22,0.9), rgba(17,17,22,0.4)), 
+                        url('https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=1920') no-repeat center center/cover;
+            margin-top: 60px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        /* Classes Section */
+        .services {
+            padding: 80px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            margin-bottom: 50px;
+        }
+
+        .section-title span {
+            color: var(--primary-color);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #2a2a35;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(255, 62, 62, 0.15);
+        }
+
+        .card-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .card-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--text-light);
+        }
+
+        .card-content p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 80px 8%;
+            background-color: #0b0b0e;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .price-card {
+            background-color: var(--bg-card);
+            padding: 40px 30px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #2a2a35;
+            position: relative;
+        }
+
+        .price-card.featured {
+            border-color: var(--primary-color);
+        }
+
+        .badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--primary-color);
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        .price-card h3 {
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+        }
+
+        .price span {
+            font-size: 1rem;
+            color: var(--text-gray);
+        }
+
+        .price-card ul {
+            list-style: none;
+            margin-bottom: 30px;
+            color: var(--text-gray);
+        }
+
+        .price-card ul li {
+            margin-bottom: 12px;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 8%;
+            text-align: center;
+        }
+
+        .contact-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-form input, .contact-form textarea {
+            background-color: var(--bg-card);
+            border: 1px solid #2a2a35;
+            padding: 15px;
+            color: white;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .contact-form input:focus, .contact-form textarea:focus {
+            outline: 1px solid var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0b0b0e;
+            text-align: center;
+            padding: 30px;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            border-top: 1px solid #222;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav, .header-actions { display: none; }
+            .hero h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Fitness<span>First</span></div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#classes">Classes</a></li>
+                <li><a href="#pricing">Memberships</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+            <button class="cta-btn">Join Now</button>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <h1>Commit To Be <span>Fit</span></h1>
+        <p>Welcome to Fitness First Studio. We offer tailored workout plans, expert-led video tutorials, and motivating group classes designed to push your boundaries and achieve your health goals.</p>
+        <button class="cta-btn" onclick="document.getElementById('pricing').scrollIntoView();">Explore Plans</button>
+    </section>
+
+    <section id="classes" class="services">
+        <h2 class="section-title">Our Specialized <span>Classes</span></h2>
+        <div class="grid">
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1518310383802-640c2de311b2?q=80&w=600');"></div>
+                <div class="card-content">
+                    <h3>High-Intensity (HIIT)</h3>
+                    <p>Burn maximum calories with fast-paced, high-energy intervals designed to boost metabolism and improve cardiovascular endurance.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=600');"></div>
+                <div class="card-content">
+                    <h3>Strength & Conditioning</h3>
+                    <p>Build lean muscle and enhance physical strength using optimal weight-training techniques led by certified professionals.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600');"></div>
+                <div class="card-content">
+                    <h3>Flexibility & Yoga</h3>
+                    <p>Connect mind and body with dynamic stretching and static poses aimed at increasing core flexibility, posture, and stress relief.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing">
+        <h2 class="section-title">Membership <span>Plans</span></h2>
+        <div class="pricing-grid">
+            <div class="price-card">
+                <h3>Basic Pass</h3>
+                <div class="price">$29<span>/mo</span></div>
+                <ul>
+                    <li>Access to Gym Floor</li>
+                    <li>2 Group Classes/mo</li>
+                    <li>Locker Room Access</li>
+                    <li>Standard Support</li>
+                </ul>
+                <button class="cta-btn" style="width: 100%;">Select Plan</button>
+            </div>
+            <div class="price-card featured">
+                <div class="badge">POPULAR</div>
+                <h3>Studio Elite</h3>
+                <div class="price">$59<span>/mo</span></div>
+                <ul>
+                    <li>Unlimited Gym Access</li>
+                    <li>All Group Classes Included</li>
+                    <li>1 Personal Training Session</li>
+                    <li>Premium Video Tutorials</li>
+                </ul>
+                <button class="cta-btn" style="width: 100%;">Select Plan</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2 class="section-title">Start Your <span>Journey</span></h2>
+        <form class="contact-form" onsubmit="event.preventDefault(); alert('Thank you for reaching out! We will contact you soon.');">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea rows="5" placeholder="Tell us about your fitness goals..." required></textarea>
+            <button type="submit" class="cta-btn">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Fitness First Studio. Built for Shaden Alawaji Portfolio. All images via Unsplash.</p>
+    </footer>
+
+</body>
+</html>
