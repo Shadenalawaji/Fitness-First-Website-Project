@@ -4,6 +4,7 @@ A modern, responsive, and high-energy studio fitness website designed to showcas
 
 ## 🚀 Live Demo
 *(Once you enable GitHub Pages, paste your link here!)*
+
 <img width="321" height="580" alt="Screenshot 1448-01-13 at 1 12 56 AM" src="https://github.com/user-attachments/assets/37cbdbb3-64ae-4687-b106-b6a810fab1e9" />
 
 
